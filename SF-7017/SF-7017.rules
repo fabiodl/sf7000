@@ -1,0 +1,97 @@
+
+(rules PCB SF-7017
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 16)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.3)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.8)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.0)
+    (clear 125.0 (type smd_to_turn_gap))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    A14 A15 ~{MEMR} ~{ROMSEL} ~{IORD} "unconnected-(IC2-Pad1)" "unconnected-(IC2-Pad13)" A12
+    A7 A6 A5 A4 A3 A2 A1 A0
+    D0 D1 D2 GND D3 D4 D5 D6
+    D7 A10 A11 A9 A8 A13 ~{MEMW} +5V
+    INUSE "unconnected-(IC2-Pad37)" RESET ~{IOR} ~{IOW} ~{9266CS} "unconnected-(IC2-Pad38)" TC
+    INDEX FDCINT FDCCLK ~{DSKD} "Net-(C13-Pad1)" WGATE "unconnected-(IC2-Pad39)" SIDE
+    US1 US0 WDATA "Net-(C16-Pad2)" FLT{slash}TRO WP{slash}TS "unconnected-(IC2-Pad40)" FR{slash}STEP
+    LCT{slash}DIR ~{RW}{slash}SEEK "unconnected-(IC3-Pad14)" BUSY ~{8255CS} ~{STROBE} "unconnected-(IC3-Pad26)" "Net-(IC38-Pad6)"
+    ~{MOTOR} GPIO0 GPIO1 GPIO2 GPIO3 GPIO4 GPIO5 GPIO6
+    GPIO7 "Net-(C29-Pad1)" "unconnected-(IC3-Pad36)" "unconnected-(IC5-Pad1)" "unconnected-(IC5-Pad2)" "unconnected-(IC13-Pad1)" "unconnected-(J1-Pad25)" "Net-(C13-Pad2)"
+    "Net-(C14-Pad1)" "Net-(C14-Pad2)" "unconnected-(J1-Pad27)" "unconnected-(J1-Pad29)" "unconnected-(J5-Pad1)" RX TX DTR
+    DSR "unconnected-(J5-Pad7)" "unconnected-(J5-Pad8)" "unconnected-(J5-Pad9)" RXD TXD ~{DTR} ~{DSR}
+    ~{DS3} xCLK ~{DS2} ~{DS1} ~{DS0} "Net-(IC38-Pad2)" "Net-(IC38-Pad3)" "Net-(IC38-Pad4)"
+    "unconnected-(J1-Pad31)" "unconnected-(IC13-Pad26)" "Net-(IC20-Pad2)" "Net-(IC20-Pad6)" "unconnected-(IC22-Pad7)" USARTCLK "Net-(IC38-Pad5)" "unconnected-(J1-Pad33)"
+    "Net-(IC14-Pad1)" "unconnected-(J2-Pad6)" "unconnected-(J2-Pad8)" "unconnected-(J2-Pad10)" "unconnected-(J2-Pad12)" "Net-(IC38-Pad7)" "unconnected-(IC38-Pad12)" "unconnected-(IC38-Pad14)"
+    ~{INDEX} "Net-(IC38-Pad13)" "unconnected-(J3-Pad2)" ~{DIR} ~{STEP} ~{WDATA} ~{WGATE} ~{TRK0}
+    ~{WRTPRO} ~{RDATA} ~{SIDE} READY ~{8251CS} "unconnected-(IC33-Pad14)" "unconnected-(IC33-Pad15)" "unconnected-(X1-Pad1)"
+    "unconnected-(X2-Pad1)" "unconnected-(U8-Pad12)" "unconnected-(U8-Pad14)" "Net-(U5-Pad4)" RW{slash}~{SEEK} "unconnected-(IC33-Pad16)" "unconnected-(IC33-Pad18)" "unconnected-(IC33-Pad23)"
+    "unconnected-(IC38-Pad1)" "Net-(C21-Pad1)" "Net-(D1-Pad2)" "Net-(D2-Pad1)" "Net-(D2-Pad2)" "Net-(D3-Pad1)" "Net-(D3-Pad2)" "Net-(J9-Pad1)"
+    "unconnected-(J10-Pad4)" "unconnected-(IC38-Pad9)" "unconnected-(SW1-Pad1)" ~{DACK} "unconnected-(RN1-Pad5)" "~{RAM_OE}" "Net-(IC14-Pad2)" "~{ROM_OE}"
+    "Net-(IC14-Pad3)" "Net-(IC14-Pad5)" "~{RAM_CE1}" "Net-(IC14-Pad11)" ~{MEMR1} ~{MEMW1} "Net-(IC16-Pad2)" RSTCT
+    Reset55 ~{MREQ1} "Net-(IC16-Pad11)" ~{MREQ} "Net-(IC17-Pad1)" "~{ROM_CE}" "Net-(IC17-Pad10)" "Net-(IC17-Pad11)"
+    "Net-(IC21-Pad3)" ~{IOWR} "Net-(IC21-Pad10)" "unconnected-(IC38-Pad15)" ~{fREADY} fREADY
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

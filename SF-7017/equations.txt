@@ -1,0 +1,35 @@
+
+
+!ram_rd= !mreq + !memr
+
+ramrom = !(A14+A15)
+       = !A14 * !A15
+
+u14p13 = !(!romsel+!ram_rd)
+       = romsel * ram_rd
+
+!rom_oe = !u14p13
+        = !romsel+!ram_rd
+        = !romsel+  !mreq + !memr
+
+!ram_we = !memw+!!!mreq
+        = !memw+!mreq
+
+
+       
+u17p3 = ! (u14p13 * ramrom)
+      = ! (romsel * ram_rd * !A14*!A15)
+      = !romsel + !ram_rd +A14+A15  
+
+
+u17p8 = ! (!ram_rd * !ram_we)
+      = ram_rd + ram_we
+      = ! (!mreq+ !memr) + ! (!memw + !mreq)
+      = mreq*memr + mreq*memw
+      = mreq*(memr+memw)
+      
+
+!ram_oe = !( u17p3 * u17p8)
+        = !u17p3 + !u17p8
+        = (romsel*ram_rd*!A14*!A15) + (!mreq + !(memr+memw))
+        = romsel*ram_rd*!A14*!A15 + !mreq+ !memr * !memw
